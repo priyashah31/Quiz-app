@@ -28,7 +28,7 @@ class RadioButtonsGroup extends React.Component {
           
   state = {
     value: 'female',
-    score: 0,
+    score: this.props.score,
     current: 1,
     user:[{
         question1:'',
@@ -62,7 +62,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'None of the above',
             }
           ],
-          correct: 'a'
+          correct: 'Keys'
         },
         {
           id: 2,
@@ -77,7 +77,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'False',
             }
           ],
-          correct: 'a'
+          correct: 'True'
         },
         {
           id: 3,
@@ -92,7 +92,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'setState()',
             },
           ],
-          correct: 'b'
+          correct: 'setState()'
         },
         {
           id: 4,
@@ -115,7 +115,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'Ref',
             }
           ],
-          correct: 'b'
+          correct: 'Props'
         },
         {
           id: 5,
@@ -130,7 +130,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'Props',
             }
           ],
-          correct: 'a'
+          correct: 'State'
         },
         {
           id: 6,
@@ -153,7 +153,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'Wrapping',
             }
           ],
-          correct: 'd'
+          correct: 'Wrapping'
         },
         {
           id: 7,
@@ -176,7 +176,7 @@ class RadioButtonsGroup extends React.Component {
               text: 'None of the above',
             }
           ],
-          correct: 'c'
+          correct: 'Free up resources'
         },
         
       ],
@@ -191,12 +191,67 @@ this.setState({score});
 }
 
   handleChange = event => {
-    this.setState({ value: event.target.value });
+      console.log(event.target.value);
+      if(event.target.value === this.state.questions[this.props.q].correct)
+     {
+        this.props.score1();
+    //   this.setState(state => ({
+        
+    //        }));
+           console.log("h");
+        }
+                 else
+      console.log("hi");
+
+    //this.setState({ value: event.target.value });
+    // if(this.state.activeStep===6){
+
+    //     console.log(this.state.user[0].question1 === this.state.questions[this.props.q].correct)
+    //  if(this.state.user[0].question1 === this.state.questions[this.props.q].correct){
+    //    console.log('hi');
+    //    this.setState(state => ({
+    //      score:state.score + 1
+    //    }));
+    //  console.log(this.state.score);
+  
+    //  }
+    //   if(this.state.user[0].question2 === this.state.questions[this.props.q].correct){
+    //      this.setState(state => ({
+    //      score:state.score+1
+    //    }));
+    //  }
+    //   if(this.state.user[0].question3 === this.state.questions[this.props.q].correct){
+    //      this.setState(state => ({
+    //      score:state.score+1
+    //    }));
+    //  }
+    //   if(this.state.user[0].question4 === this.state.questions[this.props.q].correct){
+    //     this.setState(state => ({
+    //      score:state.score+1
+    //    }));
+    //  }
+    //   if(this.state.user[0].question5 === this.state.questions[this.props.q].correct){
+    //      this.setState(state => ({
+    //      score:state.score+1
+    //    }));
+    //  }
+    //   if(this.state.user[0].question6 === this.state.questions[this.props.q].correct){
+    //      this.setState(state => ({
+    //      score:state.score+1
+    //    }));
+    //  }
+    //   if(this.state.user[0].question7 === this.state.questions[this.props.q].correct){
+    //      this.setState(state => ({
+    //      score:state.score+1
+    //    }));
+    //  }
+    //  console.log(this.state.score);
+    // }
   };
 
   render() {
     const { classes } = this.props;
-    console.log(this.props.q);
+    // console.log(this.props.q);
     const renderChoices = this.state.questions[this.props.q].choices.map((data) => {
         return(<FormControlLabel value={data.text} control={<Radio />} label={data.text} />)
      }

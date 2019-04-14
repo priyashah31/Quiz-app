@@ -26,82 +26,43 @@ function getSteps() {
   return ['', '', '', '', '', '', ''];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return (<RadioButtonGroup q={0}/>);
-    case 1:
-      return (<RadioButtonGroup q={1}/>);
+//  getStepContent=(stepIndex)=>{
+//   switch (stepIndex) {
+//     case 0:
+//       return (<RadioButtonGroup score={this.state.score} q={0}/>);
+//     case 1:
+//       return (<RadioButtonGroup score={this.state.score} q={1}/>);
         
-    case 2:
-      return (<RadioButtonGroup q={2}/>);
-    case 3:
-      return  (<RadioButtonGroup q={3}/>);
-    case 4:
-      return  (<RadioButtonGroup q={4}/>);
-    case 5:
-      return  (<RadioButtonGroup q={5}/>);
-    case 6:
-      return (<RadioButtonGroup q={6}/>);
-    case 7:
-      return (<RadioButtonGroup q={0}/>);
-    default:
-      return 'Unknown stepIndex';
-  }
-}
+//     case 2:
+//       return (<RadioButtonGroup score={this.state.score} q={2}/>);
+//     case 3:
+//       return  (<RadioButtonGroup score={this.state.score} q={3}/>);
+//     case 4:
+//       return  (<RadioButtonGroup score={this.state.score} q={4}/>);
+//     case 5:
+//       return  (<RadioButtonGroup score={this.state.score} q={5}/>);
+//     case 6:
+//       return (<RadioButtonGroup score={this.state.score} q={6}/>);
+//     case 7:
+//       return (<RadioButtonGroup score={this.state.score} q={0}/>);
+//     default:
+//       return 'Unknown stepIndex';
+//   }
+// }
 
 class HorizontalLabelPositionBelowStepper extends React.Component {
   state = {
     activeStep: 0,
-
+    score:0,
 };
+score1=()=> {
+ this.setState({score: this.state.score+1});
+}
   handleNext = () => {
     this.setState(state => ({
       activeStep: state.activeStep + 1,
     }));
-    if(this.state.activeStep===6){
-
-      console.log(this.state.user[0].question1 === this.state.questions[this.props.q].correct)
-   if(this.state.user[0].question1 === this.state.questions[this.props.q].correct){
-     console.log('hi');
-     this.setState(state => ({
-       score:state.score + 1
-     }));
-   console.log(this.state.score);
-
-   }
-    if(this.state.user[0].question2 === this.state.questions[this.props.q].correct){
-       this.setState(state => ({
-       score:state.score+1
-     }));
-   }
-    if(this.state.user[0].question3 === this.state.questions[this.props.q].correct){
-       this.setState(state => ({
-       score:state.score+1
-     }));
-   }
-    if(this.state.user[0].question4 === this.state.questions[this.props.q].correct){
-      this.setState(state => ({
-       score:state.score+1
-     }));
-   }
-    if(this.state.user[0].question5 === this.state.questions[this.props.q].correct){
-       this.setState(state => ({
-       score:state.score+1
-     }));
-   }
-    if(this.state.user[0].question6 === this.state.questions[this.props.q].correct){
-       this.setState(state => ({
-       score:state.score+1
-     }));
-   }
-    if(this.state.user[0].question7 === this.state.questions[this.props.q].correct){
-       this.setState(state => ({
-       score:state.score+1
-     }));
-   }
-   console.log(this.state.score);
-  }
+    
   };
 
   handleBack = () => {
@@ -115,16 +76,41 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
       activeStep: 0,
     });
   };
+  getStepContent=(stepIndex)=>{
+    switch (stepIndex) {
+      case 0:
+        return (<RadioButtonGroup score1={this.score1} score={this.state.score} q={0}/>);
+      case 1:
+        return (<RadioButtonGroup score1={this.score1} score={this.state.score} q={1}/>);
+          
+      case 2:
+        return (<RadioButtonGroup score1={this.score1} score={this.state.score} q={2}/>);
+      case 3:
+        return  (<RadioButtonGroup score1={this.score1} score={this.state.score} q={3}/>);
+      case 4:
+        return  (<RadioButtonGroup score1={this.score1} score={this.state.score} q={4}/>);
+      case 5:
+        return  (<RadioButtonGroup score1={this.score1} score={this.state.score} q={5}/>);
+      case 6:
+        return (<RadioButtonGroup score1={this.score1} score={this.state.score} q={6}/>);
+      case 7:
+        return (<RadioButtonGroup score1={this.score1} score={this.state.score} q={0}/>);
+      default:
+        return 'Unknown stepIndex';
+    }
+  }
+  
 
   render() {
     const { classes } = this.props;
     const steps = getSteps();
     const { activeStep } = this.state;
+    console.log(this.state.score);
    
     return (
       <Grid container justify="center" spacing={24}>
-            <Grid item>
-            <Paper style={{width:1023,height:500,marginTop:30, boxShadow: "5px 5px 5px 5px #888888"}}>
+            <Grid item xs={10}>
+            <Paper style={{marginTop:30, boxShadow: "5px 5px 5px 5px #888888"}}>
       <div style={{padding:50}}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (
@@ -138,13 +124,13 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
             <div style={{paddingLeft:100}}> 
               <Typography className={classes.instructions}>ALL STEPS ARE COMPLETED!!</Typography>
               <Button variant="contained" color="primary" onClick={this.handleReset}>Reset</Button>
-              {this.state.user.map((ans,id)=> <div> 
+              
                 <Typography variant="h6" className={classes.scores}> SCORE: {this.state.score} OUT OF 7 QUESTIONS</Typography>
-                </div>)}
+                
             </div>
           ) : (
             <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+              <Typography className={classes.instructions}>{this.getStepContent(activeStep)}</Typography>
               <div >
                 <Button
                   disabled={activeStep === 0}
