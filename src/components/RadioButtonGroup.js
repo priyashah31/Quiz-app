@@ -203,50 +203,8 @@ this.setState({score});
                  else
       console.log("hi");
 
-    //this.setState({ value: event.target.value });
-    // if(this.state.activeStep===6){
-
-    //     console.log(this.state.user[0].question1 === this.state.questions[this.props.q].correct)
-    //  if(this.state.user[0].question1 === this.state.questions[this.props.q].correct){
-    //    console.log('hi');
-    //    this.setState(state => ({
-    //      score:state.score + 1
-    //    }));
-    //  console.log(this.state.score);
-  
-    //  }
-    //   if(this.state.user[0].question2 === this.state.questions[this.props.q].correct){
-    //      this.setState(state => ({
-    //      score:state.score+1
-    //    }));
-    //  }
-    //   if(this.state.user[0].question3 === this.state.questions[this.props.q].correct){
-    //      this.setState(state => ({
-    //      score:state.score+1
-    //    }));
-    //  }
-    //   if(this.state.user[0].question4 === this.state.questions[this.props.q].correct){
-    //     this.setState(state => ({
-    //      score:state.score+1
-    //    }));
-    //  }
-    //   if(this.state.user[0].question5 === this.state.questions[this.props.q].correct){
-    //      this.setState(state => ({
-    //      score:state.score+1
-    //    }));
-    //  }
-    //   if(this.state.user[0].question6 === this.state.questions[this.props.q].correct){
-    //      this.setState(state => ({
-    //      score:state.score+1
-    //    }));
-    //  }
-    //   if(this.state.user[0].question7 === this.state.questions[this.props.q].correct){
-    //      this.setState(state => ({
-    //      score:state.score+1
-    //    }));
-    //  }
-    //  console.log(this.state.score);
-    // }
+    this.setState({ value: event.target.value });
+    
   };
 
   render() {

@@ -12,6 +12,7 @@ import RadioButtonGroup from './RadioButtonGroup';
 const styles = theme => ({
   root: {
     width: '90%',
+    
   },
   backButton: {
     marginRight: theme.spacing.unit,
@@ -74,6 +75,7 @@ score1=()=> {
   handleReset = () => {
     this.setState({
       activeStep: 0,
+      score:0,
     });
   };
   getStepContent=(stepIndex)=>{
@@ -112,6 +114,7 @@ score1=()=> {
             <Grid item xs={10}>
             <Paper style={{marginTop:30, boxShadow: "5px 5px 5px 5px #888888"}}>
       <div style={{padding:50}}>
+      <Grid item>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (
             <Step key={label}>
@@ -119,6 +122,7 @@ score1=()=> {
             </Step>
           ))}
         </Stepper>
+        </Grid>
         <div>
           {this.state.activeStep === steps.length ? (
             <div style={{paddingLeft:100}}> 
