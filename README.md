@@ -1,6 +1,6 @@
 ## This is an Quiz-app made using Reactjs and material-ui ##
 
-### The components of material-ui used are:###
+### The components of material-ui used are: ###
 #### *AppBar ####
 #### *Stepper ####
 #### *RadioButtonGroup ####
